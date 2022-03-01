@@ -63,7 +63,7 @@ const phoneDetails = data => {
     }
     // see product details 
 const seeDetails = data => {
-    console.log(data)
+    // console.log(data)
     detailsContainer.textContent = '';
     // detailsContainer
     const div = document.createElement('div');
@@ -97,11 +97,7 @@ const seeDetails = data => {
             </tr>
             <tr>
                 <th>Brand</th>
-                <td>${data.mainFeatures.storage}</td>
-            </tr>
-            <tr>
-                <th>Brand</th>
-                <td>${data.mainFeatures.brand}</td>
+                <td>${data.brand}</td>
             </tr>
            
         </table>
@@ -110,10 +106,30 @@ const seeDetails = data => {
     </div>
 
     `
-
     detailsContainer.appendChild(div);
 
-    // add sensor
+    // get  product sensor info form api
+    const sensorDetails = data.mainFeatures.sensors;
+    // console.log(sensorDetails)
+
+    // sensor itmes
+    const sensorUl = document.createElement('ul');
+    sensorUl.className = 'list-group' + ' ' + ' my-4';
+    const sensTitle = document.createElement('h3');
+    sensTitle.innerHTML = `<strong> Sensor Details </strong>`;
+    sensorUl.appendChild(sensTitle);
+    sensorDetails.forEach(sens => {
+
+        const sensorLi = document.createElement('li');
+        sensorLi.className = 'list-group-item';
+        sensorLi.innerHTML = `
+            ${sens}
+        `
+        sensorUl.appendChild(sensorLi);
+
+    })
+
+    detailsContainer.appendChild(sensorUl);
 
 
 }
