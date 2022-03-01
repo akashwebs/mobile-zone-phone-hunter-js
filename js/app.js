@@ -99,39 +99,21 @@ const seeDetails = data => {
                 <th>Brand</th>
                 <td>${data.mainFeatures.storage}</td>
             </tr>
-           
-        </table>
-
-        <table id="main-fetures" class="table table-striped border">
-            <tr>
-                <th class="fs-5" colspan="2">Main Features</th>
-
-            </tr>
-            <tr>
-                <th>Chip Set</th>
-                <td>${data.mainFeatures.chipSet}</td>
-            </tr>
-            <tr>
-                <th>display Size</th>
-                <td>${data.mainFeatures.displaySize}</td>
-            </tr>
-            <tr>
-                <th>Memory</th>
-                <td>${data.mainFeatures.memory}</td>
-            </tr>
-            <tr>
-                <th>Storage</th>
-                <td>${data.mainFeatures.storage}</td>
-            </tr>
             <tr>
                 <th>Brand</th>
-                <td>${data.mainFeatures.storage}</td>
+                <td>${data.mainFeatures.brand}</td>
             </tr>
            
         </table>
+
+        
     </div>
 
     `
 
     detailsContainer.appendChild(div);
+
+    // add sensor
+
+
 }
