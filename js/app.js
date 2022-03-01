@@ -31,6 +31,10 @@ const mobileDisplayResult = data => {
             // result search container
         const ResultContainer = document.getElementById('mobile-result-container');
         ResultContainer.textContent = ''
+        detailsContainer.textContent = '';
+        detailsContainer.classList.remove('border')
+
+
 
         if (serachTweentyPhone.length == 0) {
             errroMessge.innerText = "No result found, please try again!!";
@@ -61,11 +65,13 @@ const phoneDetails = data => {
         fetch(url)
             .then(res => res.json())
             .then(data => seeDetails(data.data))
+            .catch(error => error)
     }
     // see product details 
 const seeDetails = data => {
     // console.log(data)
     detailsContainer.textContent = '';
+
     // detailsContainer
     const div = document.createElement('div');
     div.className = 'card' + ' ' + 'border-0';
@@ -130,7 +136,58 @@ const seeDetails = data => {
     })
 
     detailsContainer.appendChild(sensorUl);
+    // --------------------product others details------------------
+    // othersDetails(data.others);
+
+
+    const othersDiv = document.createElement('div');
+
+    // ---------------------main fetaures and img---------------------------
+    othersDiv.innerHTML = `
+    <div class="card-body">
+        <table id="main-fetures" class="table table-striped border">
+            <tr>
+                <th class="fs-5" colspan="2">Others Details</th>
+
+            </tr>
+            <tr>
+                <th>Bluetooth</th>
+                <td>${data?.others?.Bluetooth ? data.others.Bluetooth : 'not found'}</td>
+            </tr>
+            <tr>
+                <th>GPS</th>
+                <td>${data?.others?.GPS?data.others.GPS : 'not found' }</td>
+            </tr>
+            <tr>
+                <th>NFC</th>
+                <td>${data?.others?.NFC?data.others.NFC : 'not found' }</td>
+            </tr>
+            <tr>
+                <th>Radio</th>
+                <td>${data?.others?.Radio? data.others.Radio : 'not found'}</td>
+            </tr>
+            <tr>
+                <th>USB</th>
+                <td>${data?.others?.USB? data.others.USB : 'not found'}</td>
+            </tr>
+            <tr>
+                <th>WLAN</th>
+                <td>${data?.others?.WLAN ? data.others.WLAN : 'Not Found'}</td>
+            </tr>
+           
+        </table>
+
+        
+    </div>
+
+    `
+    detailsContainer.appendChild(othersDiv);
+
+
+
+
 
 
     detailsContainer.classList.add('border')
+
 }
