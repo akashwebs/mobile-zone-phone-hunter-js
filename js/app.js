@@ -4,6 +4,9 @@ const PhoneSearchButton = document.getElementById('search-button');
 const inputSearch = document.getElementById('serach-input');
 // error massge get id
 const errroMessge = document.getElementById('error-messege');
+// prduct details container
+const detailsContainer = document.getElementById('product-details');
+
 
 PhoneSearchButton.addEventListener('click', () => {
         // get input serach Name
@@ -33,7 +36,6 @@ const mobileDisplayResult = data => {
     } else {
         serachTweentyPhone.forEach(data => {
             errroMessge.innerText = ''
-            console.log(data)
             const div = document.createElement('div');
             div.classList.add('col');
             div.innerHTML = `
@@ -59,7 +61,77 @@ const phoneDetails = data => {
             .then(res => res.json())
             .then(data => seeDetails(data.data))
     }
-    // see details 
+    // see product details 
 const seeDetails = data => {
     console.log(data)
+    detailsContainer.textContent = '';
+    // detailsContainer
+    const div = document.createElement('div');
+    div.className = 'card'
+    div.innerHTML = `
+
+    <img src="${data.image}" class="w-50 pt-4 pb-3 mx-auto card-img-top" alt="...">
+    <div class="card-body">
+        <h3 class='my-3'>${data.name}</h3>
+        <p class='mb-3 fw-bold'> ${data.releaseDate ? data.releaseDate : 'Release Date Not Found' } </p>
+        <table id="main-fetures" class="table table-striped border">
+            <tr>
+                <th class="fs-5" colspan="2">Main Features</th>
+
+            </tr>
+            <tr>
+                <th>Chip Set</th>
+                <td>${data.mainFeatures.chipSet}</td>
+            </tr>
+            <tr>
+                <th>display Size</th>
+                <td>${data.mainFeatures.displaySize}</td>
+            </tr>
+            <tr>
+                <th>Memory</th>
+                <td>${data.mainFeatures.memory}</td>
+            </tr>
+            <tr>
+                <th>Storage</th>
+                <td>${data.mainFeatures.storage}</td>
+            </tr>
+            <tr>
+                <th>Brand</th>
+                <td>${data.mainFeatures.storage}</td>
+            </tr>
+           
+        </table>
+
+        <table id="main-fetures" class="table table-striped border">
+            <tr>
+                <th class="fs-5" colspan="2">Main Features</th>
+
+            </tr>
+            <tr>
+                <th>Chip Set</th>
+                <td>${data.mainFeatures.chipSet}</td>
+            </tr>
+            <tr>
+                <th>display Size</th>
+                <td>${data.mainFeatures.displaySize}</td>
+            </tr>
+            <tr>
+                <th>Memory</th>
+                <td>${data.mainFeatures.memory}</td>
+            </tr>
+            <tr>
+                <th>Storage</th>
+                <td>${data.mainFeatures.storage}</td>
+            </tr>
+            <tr>
+                <th>Brand</th>
+                <td>${data.mainFeatures.storage}</td>
+            </tr>
+           
+        </table>
+    </div>
+
+    `
+
+    detailsContainer.appendChild(div);
 }

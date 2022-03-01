@@ -3,3 +3,12 @@
         width: 100% !important;
     }
 }
+
+#main-fetures tr th:first-child {
+    width: 35%;
+    border: 1px solid rgb(222, 226, 230);
+}
+
+#main-fetures tr td {
+    border: 1px solid rgb(222, 226, 230);
+}
