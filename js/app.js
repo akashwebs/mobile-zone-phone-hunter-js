@@ -33,7 +33,13 @@ PhoneSearchButton.addEventListener('click', () => {
             fetch(url)
                 .then(res => res.json())
                 .then(data => mobileDisplayResult(data.data))
-                .catch(error => console.log(error));
+                .catch(error => {
+
+                    errroMessge.innerText = error;
+                    ResultContainer.textContent = '';
+                    detailsContainer.textContent = '';
+
+                });
         }
 
     })
