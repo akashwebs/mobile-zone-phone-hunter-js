@@ -6,6 +6,9 @@ const inputSearch = document.getElementById('serach-input');
 const errroMessge = document.getElementById('error-messege');
 // prduct details container
 const detailsContainer = document.getElementById('product-details');
+// mobile serach result container
+const ResultContainer = document.getElementById('mobile-result-container');
+
 
 // -----------------fetch api with serach button---------------------
 PhoneSearchButton.addEventListener('click', () => {
@@ -13,7 +16,9 @@ PhoneSearchButton.addEventListener('click', () => {
         const searchName = inputSearch.value;
         inputSearch.value = '';
         if (!searchName) {
-            alert('wrong input')
+
+            ResultContainer.textContent = '';
+            errroMessge.innerText = 'Please enter phone name'
         } else {
 
             const url = `https://openapi.programming-hero.com/api/phones?search=${searchName}`;
@@ -29,7 +34,6 @@ PhoneSearchButton.addEventListener('click', () => {
 const mobileDisplayResult = data => {
         const serachTweentyPhone = data.slice(0, 20)
             // result search container
-        const ResultContainer = document.getElementById('mobile-result-container');
         ResultContainer.textContent = ''
         detailsContainer.textContent = '';
         detailsContainer.classList.remove('border')
@@ -44,14 +48,16 @@ const mobileDisplayResult = data => {
                 const div = document.createElement('div');
                 div.classList.add('col');
                 div.innerHTML = `
-                <div class="card">
+                <div class="card text-center">
                     <img src="${data.image}" class="w-50 pt-4 pb-3 mx-auto card-img-top" alt="...">
                     <div class="card-body">
                         <h5 class="card-title">${data.phone_name}</h5>
                         <span class="badge bg-success">${data.brand}</span>
                     </div>
                 <div class="px-3 pb-3">
+                <a href="#product-details">
                     <button onclick='phoneDetails("${data.slug}")' class="btn btn-primary px-4">Details</button>
+                    </a>
                 </div>
             </div>
             `

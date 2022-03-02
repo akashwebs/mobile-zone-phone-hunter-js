@@ -7,9 +7,14 @@
     border: 1px solid rgb(222, 226, 230);
 }
 
+#product-details {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
 @media screen and (max-width: 768px) {
     #serach-container,
     #product-details {
-        width: 100% !important;
+        width: 90% !important;
     }
 }
