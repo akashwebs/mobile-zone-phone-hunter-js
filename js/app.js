@@ -11,7 +11,10 @@ const ResultContainer = document.getElementById('mobile-result-container');
 // spinner 
 const sppinerId = document.getElementById('spinner');
 const spinnerOnOff = value => {
-        sppinerId.style.display = `${value}`;
+    sppinerId.style.display = `${value}`;
+}
+const looding = () => {
+        spinnerOnOff('none')
     }
     // -----------------fetch api with serach button---------------------
 PhoneSearchButton.addEventListener('click', () => {

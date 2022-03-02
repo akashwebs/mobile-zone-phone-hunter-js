@@ -24,7 +24,6 @@
     position: fixed;
     top: 40%;
     left: 45%;
-    display: none;
 }
 
 .lds-spinner div {
@@ -112,6 +111,9 @@
         opacity: 0;
     }
 }
+
+
+/* responsive */
 
 @media screen and (max-width: 768px) {
     #serach-container,
