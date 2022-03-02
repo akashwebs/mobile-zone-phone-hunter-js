@@ -8,9 +8,12 @@ const errroMessge = document.getElementById('error-messege');
 const detailsContainer = document.getElementById('product-details');
 // mobile serach result container
 const ResultContainer = document.getElementById('mobile-result-container');
-
-
-// -----------------fetch api with serach button---------------------
+// spinner 
+const sppinerId = document.getElementById('spinner');
+const spinnerOnOff = value => {
+        sppinerId.style.display = `${value}`;
+    }
+    // -----------------fetch api with serach button---------------------
 PhoneSearchButton.addEventListener('click', () => {
         // get input serach Name
         const searchName = inputSearch.value;
@@ -20,7 +23,7 @@ PhoneSearchButton.addEventListener('click', () => {
             ResultContainer.textContent = '';
             errroMessge.innerText = 'Please enter phone name'
         } else {
-
+            spinnerOnOff('block');
             const url = `https://openapi.programming-hero.com/api/phones?search=${searchName}`;
             fetch(url)
                 .then(res => res.json())
@@ -42,6 +45,8 @@ const mobileDisplayResult = data => {
 
         if (serachTweentyPhone.length == 0) {
             errroMessge.innerText = "No result found, please try again!!";
+            spinnerOnOff('none');
+
         } else {
             serachTweentyPhone.forEach(data => {
                 errroMessge.innerText = ''
@@ -64,6 +69,8 @@ const mobileDisplayResult = data => {
                 ResultContainer.appendChild(div);
             })
         }
+        spinnerOnOff('none');
+
     }
     // -----------single product Details---------------------
 const phoneDetails = data => {
