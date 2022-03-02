@@ -25,7 +25,9 @@ PhoneSearchButton.addEventListener('click', () => {
 
             ResultContainer.textContent = '';
             errroMessge.innerText = 'Please enter phone name'
+            detailsContainer.style.display = 'none';
         } else {
+            detailsContainer.style.display = 'block';
             spinnerOnOff('block');
             const url = `https://openapi.programming-hero.com/api/phones?search=${searchName}`;
             fetch(url)
